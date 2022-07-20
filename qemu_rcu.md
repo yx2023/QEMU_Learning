@@ -13,11 +13,11 @@ writer publish，判断当所有<b>使用老数据的rcu reader（线程）</b>�
 
 <p style="color:red";>
 QEMU publish是更新rcu_gp_ctr, 但这个rcu_gp_ctr在更新前，数据指针已经更新了，
-所以持有老ctr的线程数据也可能是新的？
+所以持有老ctr的线程数据也可能是新的？</p>
 
 ![image](https://user-images.githubusercontent.com/109275975/179889721-ef30ed48-6445-4264-a189-e6b4aa6cf916.png)
 
-</p>
+
 ### 修改数据
 实际上创建新数据，用新数据地址替换原指针指向，同时保留原数据，并将其（指向指针）推入队列dummy<br>
 ```
